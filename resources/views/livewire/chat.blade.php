@@ -1,7 +1,7 @@
 <div>
-    <div>
-        <input type="text" wire:model="user" placeholder="Seu nome" />
-    </div>
+     
+
+
     <div>
         @if (!empty($messages))
         @foreach($messages as $message)
@@ -12,7 +12,7 @@
         @endif
     </div>
     <div>
-        <input type="text" wire:model="messageText" placeholder="Digite sua mensagem" />
-        <button wire:click="sendMessage">Enviar</button>
+        <input type="text" wire:model="messageText" placeholder="Digite sua mensagem" wire:keydown.enter="sendMessage"/>
+        <button wire:submit="sendMessage">Enviar</button>
     </div>
 </div>

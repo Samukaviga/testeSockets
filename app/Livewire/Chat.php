@@ -28,6 +28,8 @@ class Chat extends Component
     public function sendMessage()
     {
 
+        $this->user = auth()->check() ? auth()->user()->name : 'Anônimo';
+
         // Criar nova mensagem
         $message = Message::create([
             'user' => $this->user,
