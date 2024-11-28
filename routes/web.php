@@ -24,6 +24,7 @@ Route::get('private', [testController::class, 'private']);
 
 
 
+Route::get('/chat', [testController::class, 'viewChat']);
 
 Route::view('check', 'checkingWebsockets');
 Route::view('checkPrivate', 'viewPrivateWebSockets'); 

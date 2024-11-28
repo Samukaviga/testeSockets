@@ -51,4 +51,9 @@ class testController extends Controller
     {
         return view('viewMessage');
     }
+
+    function viewChat()
+    {
+        return view('chat');
+    }
 }
