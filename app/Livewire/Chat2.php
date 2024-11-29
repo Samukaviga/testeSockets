@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Events\MessageSent;
 use App\Models\Message;
 use Livewire\Component;
 
@@ -11,6 +12,8 @@ class Chat2 extends Component
     public $messageText;
     public $user;
     public $messages;
+
+    protected $listeners = ['echo:message-channel,.message-event' => 'updateMessage'];
 
 
     public function mount()
@@ -39,10 +42,20 @@ class Chat2 extends Component
             // Enviar apenas os dados necessários para o evento
 
 
+            MessageSent::dispatch($this->user, $this->messageText);
+
             // $this->messages = $message->toArray();
 
             // Limpar o campo de mensagem
             $this->messageText = '';
         }
+    }
+
+    public function updateMessage($data)
+    {
+        $this->messages[] = [
+            'user' => $data['user'],
+            'message' => $data['message'],
+        ];
     }
 }
