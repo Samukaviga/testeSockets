@@ -74,16 +74,15 @@
                                 <div class="msg_cotainer_send">
                                     {{ $message['message'] }}
                                 </div>
-                                <p>{{ $message['user'] }}</p>
+                                <p >{{ $message['user'] }}</p>
                             </div>
                         @else
                             <div class="d-flex justify-content-start mb-4">
-                                <div class="img_cont_msg mt-2">
-                                    <p >{{ $message['user'] }}</p>
+                                <div class=" mt-2">
+                                    <p class="">{{ $message['user'] }}</p>
                                 </div>
                                 <div class="msg_cotainer">
                                     {{ $message['message'] }}
-                                    
                                 </div>
                                 
                             </div>
