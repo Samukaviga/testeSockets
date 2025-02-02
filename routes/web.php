@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\testController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,7 +16,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+
+    if (Auth::user()) {
+        return view('chat');
+    }
+
+    return to_route('login');
 });
 
 Route::get('teste', [testController::class, 'teste']);
@@ -24,10 +30,10 @@ Route::get('private', [testController::class, 'private']);
 
 
 
-Route::get('/chat', [testController::class, 'viewChat']);
+Route::get('/chat', [testController::class, 'viewChat'])->name('chat');
 
 Route::view('check', 'checkingWebsockets');
-Route::view('checkPrivate', 'viewPrivateWebSockets'); 
+Route::view('checkPrivate', 'viewPrivateWebSockets');
 
 //Route::view('chat', 'viewMessage'); 
 
